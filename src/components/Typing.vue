@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="12" sm="6">
         <v-textarea
-          class="text-h6 font-weight-thin"
+          class="black--text text-subtitle-1 font-weight-light p2"
           disabled
           solo
           no-resize
@@ -13,7 +13,7 @@
       </v-col>
       <v-col cols="12" sm="6">
         <v-textarea
-          class="text-h6 font-weight-regular"
+          class="text-subtitle-1 font-weight-regular"
           outlined
           flat
           no-resize
@@ -27,8 +27,10 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: "Hero",
+  name: "Typing",
   data() {
     return {
       height: 0,
@@ -38,32 +40,24 @@ export default {
   },
   mounted() {
     console.log("mount");
-    let baseUrl = location.protocol + "//" + location.host;
-    let Url = baseUrl + "/api/random";
+    let Url =
+      "https://cors-anywhere.herokuapp.com/https://typ-game.now.sh/api/random";
     console.log(Url);
-    fetch(Url)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        this.textdata = data.text;
+
+    axios({
+      method: "GET",
+      url: Url,
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
+    })
+      .then(res => {
+        console.log(res.data);
+        this.textdata = res.data.text;
       })
       .catch(err => console.log(err));
-
-    console.log(this.textdata);
   },
   methods: {
-    incrementCount() {
-      this.$store.commit("increment");
-      this.valueCount = this.$store.state.count;
-    },
-    decrementCount() {
-      this.$store.commit("decrement");
-      this.valueCount = this.$store.state.count;
-    },
-    flushCount() {
-      this.$store.commit("flush");
-      this.valueCount = this.$store.state.count;
-    },
     CheckText() {
       // console.log('changes')
       // console.log(this.textdata);
