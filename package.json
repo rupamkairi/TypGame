@@ -1,46 +1,12 @@
 {
   "name": "typgame",
-  "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+  "npmClient": "yarn",
+  "devDependencies": {
+    "lerna": "^3.22.1"
   },
   "dependencies": {
-    "@vue/cli-plugin-babel": "4.1.1",
-    "axios": "0.20.0",
-    "cheerio": "1.0.0-rc.3",
-    "vue": "^2.6.11",
-    "vue-router": "3.3.4",
-    "vuetify": "2.3.6",
-    "vuex": "3.5.1"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-eslint": "4.1.1",
-    "@vue/cli-service": "4.1.1",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.0.1",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": ["plugin:vue/essential", "eslint:recommended"],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"],
-  "keywords": ["vercel", "vue"],
-  "description": "A way to get hands on for your typing test. In various langs and topics you pick."
+    "axios": "^0.20.0",
+    "cheerio": "^1.0.0-rc.3"
+  }
 }

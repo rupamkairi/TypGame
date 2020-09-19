@@ -1,2 +1,0 @@
-# TypGame
-Created with CodeSandbox

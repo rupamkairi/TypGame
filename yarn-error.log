@@ -1,0 +1,33 @@
+Arguments: 
+  G:\PROGRAMMING\ProgrammingLanguages\nodejs\node.exe C:\Users\Rupam\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add axios
+
+PATH: 
+  C:\Users\rupam\bin;G:\PROGRAMMING\Tools\Git\mingw64\bin;G:\PROGRAMMING\Tools\Git\usr\local\bin;G:\PROGRAMMING\Tools\Git\usr\bin;G:\PROGRAMMING\Tools\Git\usr\bin;G:\PROGRAMMING\Tools\Git\mingw64\bin;G:\PROGRAMMING\Tools\Git\usr\bin;C:\Users\rupam\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Windows;C:\Windows\system32;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files\dotnet;G:\PROGRAMMING\ProgrammingLanguages\MinGW\bin;G:\PROGRAMMING\ProgrammingLanguages\nodejs;C:\Users\Rupam\AppData\Roaming\npm;G:\PROGRAMMING\ProgrammingLanguages\Python\Python38;G:\PROGRAMMING\ProgrammingLanguages\Python\Python38\Scripts;G:\PROGRAMMING\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin;G:\PROGRAMMING\Tools\Git\cmd;G:\PROGRAMMING\Tools\Git\usr\bin;G:\PROGRAMMING\Android\Sdk\tools;G:\PROGRAMMING\Android\Sdk\platform-tools;G:\PROGRAMMING\Tools\PostgreSQL\12\bin;G:\PROGRAMMING\Tools\MongoDB\Server\4.4\bin;G:\PROGRAMMING\ProgrammingLanguages\Python\Python38\Scripts;G:\PROGRAMMING\ProgrammingLanguages\Python\Python38;G:\PROGRAMMING\ProgrammingLanguages\Python\Python37\Scripts;G:\PROGRAMMING\ProgrammingLanguages\Python\Python37;G:\PROGRAMMING\ProgrammingLanguages\Python\Scripts;G:\PROGRAMMING\ProgrammingLanguages\Python;G:\PROGRAMMING\ProgrammingLanguages\Python38\Scripts;G:\PROGRAMMING\ProgrammingLanguages\Python38;C:\Users\rupam\AppData\Local\Microsoft\WindowsApps;C:\Users\rupam\.dotnet\tools;C:\Users\rupam\AppData\Local\hyper\app-3.0.2\resources\bin;G:\PROGRAMMING\Microsoft VS Code\bin;C:\Users\rupam\AppData\Local\GitHubDesktop\bin;%CLion%;C:\Users\rupam\AppData\Roaming\npm;C:\Users\rupam\AppData\Local\atom\bin;G:\PROGRAMMING\Tools\Microsoft VS Code\bin;G:\PROGRAMMING\Tools\Microsoft VS Code Insiders\bin;G:\PROGRAMMING\Tools\GitHub CLI;G:\PROGRAMMING\Tools\Git\usr\bin\vendor_perl;G:\PROGRAMMING\Tools\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  12.18.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EBUSY: resource busy or locked, copyfile 'C:\Users\rupam\AppData\Local\Yarn\Cache\v6\npm-rxjs-6.6.3-8ca84635c4daa900c0d3967a6ee7ac60271ee552-integrity\node_modules\rxjs\src\observable\ArrayObservable.ts' -> 'G:\PROGRAMMING\Web Applications\Node Apps\TypGame\node_modules\rxjs\src\observable\ArrayObservable.ts'
+
+npm manifest: 
+  {
+    "name": "root",
+    "private": true,
+    "npmClient": "yarn",
+    "devDependencies": {
+      "lerna": "^3.22.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
