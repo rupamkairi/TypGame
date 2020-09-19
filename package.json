@@ -1,12 +1,18 @@
 {
-  "name": "typgame",
-  "private": true,
-  "npmClient": "yarn",
-  "devDependencies": {
-    "lerna": "^3.22.1"
+  "name": "typ-game",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
   },
   "dependencies": {
+    "tailwindcss": "^1.8.10",
+    "vue": "^3.0.0-rc.1",
     "axios": "^0.20.0",
     "cheerio": "^1.0.0-rc.3"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.0-rc.1",
+    "vite": "^1.0.0-rc.1"
   }
 }

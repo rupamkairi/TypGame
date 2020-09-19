@@ -1,6 +1,6 @@
 [build]
 	functions= "functions/"
-	publish="typ-game/dist/"
+	publish="dist/"
 [[redirects]]
 	from = "/api/*"
 	to = "/.netlify/functions/:splat"
