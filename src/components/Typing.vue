@@ -59,15 +59,20 @@ export default {
   },
   methods: {
     CheckText() {
-      // console.log('changes')
-      // console.log(this.textdata);
-      // console.log(this.typedata);
       var l = this.typedata.length;
       console.log([this.typedata, this.textdata.slice(0, l)]);
       if (this.typedata === this.textdata.slice(0, l)) {
         console.log("good");
       } else {
         console.log("wrong");
+        //TODO
+        // (hello, world).split("");
+        // ["hello,", "world"]
+
+        // The Justice for Myanmar
+        // The Justice for Myanmar website was blocked in Myanmar on August 27 for allegedly spreading ‘fake news’. The website was launched on April 28 by a ‘covert group of
+        // The JusTice for Mayanmar
+        //     ^^^^^^^
       }
     }
   },
