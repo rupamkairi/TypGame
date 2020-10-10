@@ -1,14 +1,16 @@
 <template>
-  <Typing />
+  <TypingArea />
+  <ScoreCard />
 </template>
 
 <script>
-import Typing from "./components/Typing.vue";
-
+import TypingArea from "./components/TypingArea.vue";
+import ScoreCard from "./components/ScoreCard.vue";
 export default {
   name: "App",
   components: {
-    Typing,
+    TypingArea,
+    ScoreCard,
   },
 };
 </script>
