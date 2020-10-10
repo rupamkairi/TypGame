@@ -77,9 +77,7 @@ export default {
         "reference"
       ).style.height = document.getElementById("practice").style.height = "0px";
 
-      fetch(
-        "https://cors-anywhere.herokuapp.com/https://typ-game.netlify.app/api/random"
-      )
+      fetch("https://typ-game.netlify.app/api/random")
         .then((response) => response.json())
         .then((data) => {
           this.referenceText = data.text;
