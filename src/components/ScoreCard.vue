@@ -3,13 +3,13 @@
     <div class="mx-auto bg-gray-200 flex rounded shadow py-6 px-8">
       <div class="flex-1 mx-6 text-blue-500">
         <p class="text-2xl font-bold uppercase">score</p>
-        <p class="text-5xl font-black">{{ score }}</p>
+        <p class="text-5xl font-black">
+          {{ score }}<span class="text-xl font-bold">wpm</span>
+        </p>
       </div>
       <div class="flex-1 mx-6 text-red-500">
         <p class="text-2xl font-bold uppercase">mistakes</p>
-        <p class="text-5xl font-black center">
-          {{ mistakes }}
-        </p>
+        <p class="text-5xl font-black center">{{ mistakes }}</p>
       </div>
       <div class="flex-grow mx-6 text-green-500">
         <div class="border-l-4 border- pl-6">

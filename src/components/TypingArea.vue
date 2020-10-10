@@ -1,8 +1,21 @@
 <template>
   <div class="container mx-auto flex">
     <div class="md:flex-1 m-6 flex flex-col">
-      <div class="bg-gray-200 px-3 py-2 shadow-inner rounded-t-md border-b">
-        <p class="text-gray-700">Reference</p>
+      <div class="bg-gray-200 px-3 py-4 shadow-inner rounded-t-md border-b">
+        <div class="flex justify-between content-center">
+          <p class="text-gray-700">Reference</p>
+          <button
+            class="bg-blue-500 hover:bg-blue-700 w-6 h-6 text-white rounded-full active:outline-none focus:outline-none"
+            @click="fetchText()"
+          >
+            <svg style="width: 16px; height: 16px" viewBox="-2 0 16 24">
+              <path
+                fill="currentColor"
+                d="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
       <textarea
         id="reference"
@@ -14,7 +27,7 @@
     </div>
 
     <div class="md:flex-1 m-6 flex flex-col bg-transparent">
-      <div class="bg-gray-200 px-3 py-2 shadow-inner rounded-t-md border-b">
+      <div class="bg-gray-200 px-3 py-4 shadow-inner rounded-t-md border-b">
         <p class="text-gray-700">Practice</p>
       </div>
       <textarea
@@ -41,20 +54,7 @@ export default {
     };
   },
   mounted() {
-    let fetchPromise = fetch(
-      "https://cors-anywhere.herokuapp.com/https://typ-game.netlify.app/api/random"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        this.referenceText = data.text;
-      })
-      .then(() => {
-        this.textareaHeight = document.getElementById("reference").scrollHeight;
-        document.getElementById("reference").style.height =
-          this.textareaHeight + "px";
-        document.getElementById("practice").style.height =
-          this.textareaHeight + "px";
-      });
+    this.fetchText();
   },
   methods: {
     first_last_Input() {
@@ -71,6 +71,28 @@ export default {
         this.finished = true;
         console.log(this.finished);
       }
+    },
+    fetchText() {
+      document.getElementById(
+        "reference"
+      ).style.height = document.getElementById("practice").style.height = "0px";
+
+      fetch(
+        "https://cors-anywhere.herokuapp.com/https://typ-game.netlify.app/api/random"
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          this.referenceText = data.text;
+        })
+        .then(() => {
+          this.textareaHeight = document.getElementById(
+            "reference"
+          ).scrollHeight;
+          document.getElementById("reference").style.height =
+            this.textareaHeight + "px";
+          document.getElementById("practice").style.height =
+            this.textareaHeight + "px";
+        });
     },
   },
 };
