@@ -6,6 +6,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@fullhuman/postcss-purgecss": "^3.0.0",
     "tailwindcss": "^1.8.10",
     "vue": "^3.0.0-rc.1"
   },

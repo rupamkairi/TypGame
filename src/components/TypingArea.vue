@@ -77,6 +77,10 @@ export default {
         "reference"
       ).style.height = document.getElementById("practice").style.height = "0px";
 
+      this.started = this.finished = false;
+      // timer state reset
+      // scores and mistake reset
+
       fetch("https://typ-game.netlify.app/api/random")
         .then((response) => response.json())
         .then((data) => {
