@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto flex">
-    <div class="md:flex-1 m-6 flex flex-col">
+    <div class="flex-1 m-6 flex flex-col">
       <div class="bg-gray-200 px-3 py-4 shadow-inner rounded-t-md border-b">
         <div class="flex justify-between content-center">
           <p class="text-gray-700">Reference</p>
@@ -26,7 +26,7 @@
       ></textarea>
     </div>
 
-    <div class="md:flex-1 m-6 flex flex-col bg-transparent">
+    <div class="flex-1 m-6 flex flex-col bg-transparent">
       <div class="bg-gray-200 px-3 py-4 shadow-inner rounded-t-md border-b">
         <p class="text-gray-700">Practice</p>
       </div>
@@ -81,6 +81,7 @@ export default {
       // timer state reset
       // scores and mistake reset
 
+      // https://cors-anywhere.herokuapp.com/
       fetch("https://typ-game.netlify.app/api/random")
         .then((response) => response.json())
         .then((data) => {
