@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "netlify:dev": "netlify dev"
   },
   "dependencies": {
     "tailwindcss": "^1.8.10",

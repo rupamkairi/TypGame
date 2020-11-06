@@ -35,7 +35,7 @@
         class="p-2 bg-gray-100 shadow-md resize-y rounded-b-md focus:outline-none"
         spellcheck="false"
         v-model="practiceText"
-        @input="first_last_Input()"
+        @input="first_last_Input(), error_check()"
       ></textarea>
     </div>
   </div>
@@ -51,6 +51,9 @@ export default {
       finished: false,
       practiceText: "",
       textareaHeight: Number,
+      starttime: Number,
+      stoptime: Number,
+      mistakes: [],
     };
   },
   mounted() {
@@ -60,7 +63,8 @@ export default {
     first_last_Input() {
       if (this.started == false && this.practiceText != "") {
         this.started = true;
-        console.log(this.started);
+        this.starttime = Date.now();
+        console.log("started: " + this.started);
       }
 
       if (
@@ -69,7 +73,24 @@ export default {
         this.practiceText.charAt(this.referenceText.length - 1) == "."
       ) {
         this.finished = true;
-        console.log(this.finished);
+        console.log("finished: " + this.finished);
+        this.stoptime = Date.now();
+        let words = this.practiceText.split(" ").length;
+        console.log(
+          words +
+            " words finished in " +
+            (this.stoptime - this.starttime) / 1000 +
+            " Seconds"
+        );
+        document.getElementById("practice").disabled = true;
+      }
+    },
+    error_check() {
+      let l = this.practiceText.length;
+
+      if (this.referenceText.charAt(l - 1) != this.practiceText.charAt(l - 1)) {
+        this.mistakes.push(l - 1);
+        console.log(this.mistakes);
       }
     },
     fetchText() {
@@ -81,8 +102,10 @@ export default {
       // timer state reset
       // scores and mistake reset
 
-      // https://cors-anywhere.herokuapp.com/
-      fetch("https://typ-game.netlify.app/api/random")
+      let proxy = "https://cors-anywhere.herokuapp.com/";
+      let url = `${location.protocol}//${location.host}/api/random`;
+      console.log(url);
+      fetch(url)
         .then((response) => response.json())
         .then((data) => {
           this.referenceText = data.text;
@@ -96,6 +119,14 @@ export default {
           document.getElementById("practice").style.height =
             this.textareaHeight + "px";
         });
+
+      // this.referenceText =
+      //   "This article was written by Sean McCoon and originally published on Cari-Bois News.";
+      // this.textareaHeight = document.getElementById("reference").scrollHeight;
+      // document.getElementById("reference").style.height =
+      //   this.textareaHeight + "px";
+      // document.getElementById("practice").style.height =
+      //   this.textareaHeight + "px";
     },
   },
 };
