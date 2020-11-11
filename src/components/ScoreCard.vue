@@ -21,16 +21,21 @@
       </div>
     </div>
   </div>
+  <p>{{ message }}from scorecard</p>
 </template>
 
 <script>
+import store from "../store";
+
 export default {
   name: "ScoreCard",
-  data() {
+  setup() {
+    const { message } = store();
     return {
       score: 0,
       mistakes: 0,
       time: "00:17",
+      message: message,
     };
   },
 };

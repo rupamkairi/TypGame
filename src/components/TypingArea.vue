@@ -39,9 +39,12 @@
       ></textarea>
     </div>
   </div>
+  <p>{{ msg }}</p>
 </template>
 
 <script>
+import store from "../store";
+
 export default {
   name: "TypingArea",
   data() {
@@ -55,6 +58,12 @@ export default {
       stoptime: Number,
       mistakes: [],
     };
+  },
+  computed: {
+    msg() {
+      const { message } = store();
+      return message.value;
+    },
   },
   mounted() {
     this.fetchText();
@@ -102,31 +111,34 @@ export default {
       // timer state reset
       // scores and mistake reset
 
-      let proxy = "https://cors-anywhere.herokuapp.com/";
-      let url = `${location.protocol}//${location.host}/api/random`;
-      console.log(url);
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => {
-          this.referenceText = data.text;
-        })
-        .then(() => {
-          this.textareaHeight = document.getElementById(
-            "reference"
-          ).scrollHeight;
-          document.getElementById("reference").style.height =
-            this.textareaHeight + "px";
-          document.getElementById("practice").style.height =
-            this.textareaHeight + "px";
-        });
+      // let proxy = "https://cors-anywhere.herokuapp.com/";
+      // let url = `${location.protocol}//${location.host}/api/random`;
+      // console.log(url);
+      // fetch(url)
+      //   .then((response) => response.json())
+      //   .then((data) => {
+      //     this.referenceText = data.text;
+      //   })
+      //   .then(() => {
+      //     this.textareaHeight = document.getElementById(
+      //       "reference"
+      //     ).scrollHeight;
+      //     document.getElementById("reference").style.height =
+      //       this.textareaHeight + "px";
+      //     document.getElementById("practice").style.height =
+      //       this.textareaHeight + "px";
+      //   });
 
-      // this.referenceText =
-      //   "This article was written by Sean McCoon and originally published on Cari-Bois News.";
-      // this.textareaHeight = document.getElementById("reference").scrollHeight;
-      // document.getElementById("reference").style.height =
-      //   this.textareaHeight + "px";
-      // document.getElementById("practice").style.height =
-      //   this.textareaHeight + "px";
+      this.referenceText =
+        "This article was written by Sean McCoon and originally published on Cari-Bois News.";
+      this.textareaHeight = document.getElementById("reference").scrollHeight;
+      document.getElementById("reference").style.height =
+        this.textareaHeight + "px";
+      document.getElementById("practice").style.height =
+        this.textareaHeight + "px";
+
+      const { message } = store();
+      console.log(message.value);
     },
   },
 };
