@@ -39,11 +39,10 @@
       ></textarea>
     </div>
   </div>
-  <p>{{ msg }}</p>
 </template>
 
 <script>
-import store from "../store";
+import { useTimer } from "../store";
 
 export default {
   name: "TypingArea",
@@ -59,21 +58,19 @@ export default {
       mistakes: [],
     };
   },
-  computed: {
-    msg() {
-      const { message } = store();
-      return message.value;
-    },
-  },
+  computed: {},
   mounted() {
     this.fetchText();
   },
   methods: {
     first_last_Input() {
+      const { startTimer, stopTimer } = useTimer();
+
       if (this.started == false && this.practiceText != "") {
         this.started = true;
         this.starttime = Date.now();
         console.log("started: " + this.started);
+        startTimer();
       }
 
       if (
@@ -83,6 +80,7 @@ export default {
       ) {
         this.finished = true;
         console.log("finished: " + this.finished);
+        stopTimer();
         this.stoptime = Date.now();
         let words = this.practiceText.split(" ").length;
         console.log(
@@ -103,11 +101,11 @@ export default {
       }
     },
     fetchText() {
-      document.getElementById(
-        "reference"
-      ).style.height = document.getElementById("practice").style.height = "0px";
+      // document.getElementById(
+      //   "reference"
+      // ).style.height = document.getElementById("practice").style.height = "0px";
 
-      this.started = this.finished = false;
+      // this.started = this.finished = false;
       // timer state reset
       // scores and mistake reset
 
@@ -129,16 +127,12 @@ export default {
       //       this.textareaHeight + "px";
       //   });
 
-      this.referenceText =
-        "This article was written by Sean McCoon and originally published on Cari-Bois News.";
-      this.textareaHeight = document.getElementById("reference").scrollHeight;
-      document.getElementById("reference").style.height =
-        this.textareaHeight + "px";
-      document.getElementById("practice").style.height =
-        this.textareaHeight + "px";
-
-      const { message } = store();
-      console.log(message.value);
+      this.referenceText = "H w.";
+      // this.textareaHeight = document.getElementById("reference").scrollHeight;
+      // document.getElementById("reference").style.height =
+      //   this.textareaHeight + "px";
+      // document.getElementById("practice").style.height =
+      //   this.textareaHeight + "px";
     },
   },
 };

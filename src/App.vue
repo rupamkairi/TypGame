@@ -1,15 +1,15 @@
 <template>
   <TypingArea />
   <ScoreCard />
-  <p>{{ message }}from app</p>
-  <p>{{ startFlag }}</p>
+  <!-- <button @click="switchtimer()">timer switch from app</button> -->
+  <!-- <p>state.message : {{ message }}</p> -->
 </template>
 
 <script>
 import TypingArea from "./components/TypingArea.vue";
 import ScoreCard from "./components/ScoreCard.vue";
 
-import store from "./store";
+// import { useTimer } from "./store";
 
 export default {
   name: "App",
@@ -18,11 +18,14 @@ export default {
     ScoreCard,
   },
   setup() {
-    const { message, startFlag, updateMessage } = store();
-
-    updateMessage("Hello, ");
-
-    return { message: message, startFlag: startFlag };
+    // const { message, updateMessage } = store();
+    // updateMessage("Hello, ");
+    // const { timer, toggleTimer } = useTimer();
+    // function switchtimer() {
+    //   console.log(isRef(timer));
+    //   toggleTimer();
+    // }
+    // return { switchtimer };
   },
 };
 </script>

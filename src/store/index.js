@@ -1,18 +1,54 @@
-import { reactive, toRefs } from "vue";
+import { ref, reactive, toRefs, onMounted, onUnmounted } from "vue";
 
 export default function store() {
   const state = reactive({
     message: "Hello",
-    startFlag: false,
   });
 
   const updateMessage = (message) => {
     state.message = message;
   };
 
-  const updateStart = () => {
-    startFlag.value = true;
+  return { ...toRefs(state), updateMessage };
+}
+
+export function useMousePosition() {
+  const x = ref(0);
+  const y = ref(0);
+
+  function update(e) {
+    x.value = e.pageX;
+    y.value = e.pageY;
+  }
+
+  onMounted(() => {
+    window.addEventListener("mousemove", update);
+  });
+
+  onUnmounted(() => {
+    window.removeEventListener("mousemove", update);
+  });
+
+  return { x, y };
+}
+
+const timer = ref(false);
+export function useTimer() {
+  const toggleTimer = () => {
+    if (timer.value == true) {
+      timer.value = false;
+    } else {
+      timer.value = true;
+    }
   };
 
-  return { ...toRefs(state), updateMessage, updateStart };
+  const startTimer = () => {
+    timer.value = true;
+  };
+
+  const stopTimer = () => {
+    timer.value = false;
+  };
+
+  return { timer, toggleTimer, startTimer, stopTimer };
 }
