@@ -19,7 +19,7 @@
       </div>
       <textarea
         id="reference"
-        class="p-2 bg-gray-100 shadow-md resize-y rounded-b-md focus:outline-none"
+        class="p-2 text-xl bg-gray-100 shadow-md resize-y rounded-b-md focus:outline-none"
         disabled
         spellcheck="false"
         v-model="referenceText"
@@ -32,7 +32,7 @@
       </div>
       <textarea
         id="practice"
-        class="p-2 bg-gray-100 shadow-md resize-y rounded-b-md focus:outline-none"
+        class="p-2 text-xl bg-gray-100 shadow-md resize-y rounded-b-md focus:outline-none"
         spellcheck="false"
         v-model="practiceText"
         @input="first_last_Input(), error_check()"
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { useTimer } from "../store";
+import { useTimer, useMistakes } from "../store";
 
 export default {
   name: "TypingArea",
@@ -53,9 +53,6 @@ export default {
       finished: false,
       practiceText: "",
       textareaHeight: Number,
-      starttime: Number,
-      stoptime: Number,
-      mistakes: [],
     };
   },
   computed: {},
@@ -68,8 +65,7 @@ export default {
 
       if (this.started == false && this.practiceText != "") {
         this.started = true;
-        this.starttime = Date.now();
-        console.log("started: " + this.started);
+
         startTimer();
       }
 
@@ -79,55 +75,49 @@ export default {
         this.practiceText.charAt(this.referenceText.length - 1) == "."
       ) {
         this.finished = true;
-        console.log("finished: " + this.finished);
         stopTimer();
-        this.stoptime = Date.now();
-        let words = this.practiceText.split(" ").length;
-        console.log(
-          words +
-            " words finished in " +
-            (this.stoptime - this.starttime) / 1000 +
-            " Seconds"
-        );
+
         document.getElementById("practice").disabled = true;
       }
     },
     error_check() {
+      const { mistakes, madeMistakes } = useMistakes();
       let l = this.practiceText.length;
 
       if (this.referenceText.charAt(l - 1) != this.practiceText.charAt(l - 1)) {
-        this.mistakes.push(l - 1);
-        console.log(this.mistakes);
+        madeMistakes(l - 1);
       }
     },
     fetchText() {
-      // document.getElementById(
-      //   "reference"
-      // ).style.height = document.getElementById("practice").style.height = "0px";
+      document.getElementById(
+        "reference"
+      ).style.height = document.getElementById("practice").style.height = "0px";
 
-      // this.started = this.finished = false;
+      this.started = this.finished = false;
       // timer state reset
       // scores and mistake reset
 
       // let proxy = "https://cors-anywhere.herokuapp.com/";
-      // let url = `${location.protocol}//${location.host}/api/random`;
-      // console.log(url);
-      // fetch(url)
-      //   .then((response) => response.json())
-      //   .then((data) => {
-      //     this.referenceText = data.text;
-      //   })
-      //   .then(() => {
-      //     this.textareaHeight = document.getElementById(
-      //       "reference"
-      //     ).scrollHeight;
-      //     document.getElementById("reference").style.height =
-      //       this.textareaHeight + "px";
-      //     document.getElementById("practice").style.height =
-      //       this.textareaHeight + "px";
-      //   });
+      let url = `${location.protocol}//${location.host}/api/random`;
+      // let url = `${proxy}https://typ-game.netlify.app/api/random`;
+      console.log(url);
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          this.referenceText = data.text.trim();
+        })
+        .then(() => {
+          this.textareaHeight = document.getElementById(
+            "reference"
+          ).scrollHeight;
+          document.getElementById("reference").style.height =
+            this.textareaHeight + "px";
+          document.getElementById("practice").style.height =
+            this.textareaHeight + "px";
+        });
 
-      this.referenceText = "H w.";
+      // let text = "Hello, world.";
+      // this.referenceText = text.trim();
       // this.textareaHeight = document.getElementById("reference").scrollHeight;
       // document.getElementById("reference").style.height =
       //   this.textareaHeight + "px";

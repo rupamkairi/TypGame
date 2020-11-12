@@ -1,35 +1,9 @@
 import { ref, reactive, toRefs, onMounted, onUnmounted } from "vue";
 
 export default function store() {
-  const state = reactive({
-    message: "Hello",
-  });
+  const state = reactive({});
 
-  const updateMessage = (message) => {
-    state.message = message;
-  };
-
-  return { ...toRefs(state), updateMessage };
-}
-
-export function useMousePosition() {
-  const x = ref(0);
-  const y = ref(0);
-
-  function update(e) {
-    x.value = e.pageX;
-    y.value = e.pageY;
-  }
-
-  onMounted(() => {
-    window.addEventListener("mousemove", update);
-  });
-
-  onUnmounted(() => {
-    window.removeEventListener("mousemove", update);
-  });
-
-  return { x, y };
+  return { ...toRefs(state) };
 }
 
 const timer = ref(false);
@@ -51,4 +25,15 @@ export function useTimer() {
   };
 
   return { timer, toggleTimer, startTimer, stopTimer };
+}
+
+const mistakes = ref([]);
+export function useMistakes() {
+  const madeMistakes = (indexValue) => {
+    if (mistakes.value.includes(indexValue) == false) {
+      mistakes.value.push(indexValue);
+    }
+  };
+
+  return { mistakes, madeMistakes };
 }
